@@ -1,0 +1,30 @@
+name: Lab 3 Create Artifact
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: Pretend to build
+        run: echo Pretending to build some kind of app...
+
+      - name: Push artifact foo.txt
+        uses: actions/upload-artifact@v7
+        with:
+          name: my-artifact
+          path: foo.txt
